@@ -1,0 +1,18 @@
+127.0.0.1	localhost
+127.0.1.1	robert-asus-ux305
+127.0.0.1	es1
+127.0.0.1	es2
+127.0.0.1	es3
+127.0.0.1	dr-es1
+127.0.0.1	dr-es2
+127.0.0.1	dr-es3
+172.18.0.2	eventstore.adap
+127.0.0.3	eventstore.adap
+127.0.0.4	eventstore.adap
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

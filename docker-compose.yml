@@ -1,0 +1,85 @@
+version: '2'
+services:
+  es1: 
+    image: es-cluster-node
+    expose:
+      - "1111"
+      - "1112"
+      - "2113"
+      - "2114"
+    networks:
+      escluster:
+        ipv4_address: 172.16.238.11
+    dns: 172.16.238.100
+    environment:
+      EVENTSTORE_INT_IP: 172.16.238.11
+      EVENTSTORE_EXT_IP: 172.16.238.11
+      EVENTSTORE_INT_TCP_PORT: 1111
+      EVENTSTORE_EXT_TCP_PORT: 1112
+      EVENTSTORE_INT_HTTP_PORT: 2113
+      EVENTSTORE_EXT_HTTP_PORT: 2114
+      EVENTSTORE_CLUSTER_SIZE: 3
+      EVENTSTORE_CLUSTER_DNS: escluster.net
+      EVENTSTORE_CLUSTER_GOSSIP_PORT: 2113
+
+  es2: 
+    image: es-cluster-node
+    expose:
+      - "1111"
+      - "1112"
+      - "2113"
+      - "2114"
+    networks:
+      escluster:
+        ipv4_address: 172.16.238.12
+    dns: 172.16.238.100
+    environment:
+      EVENTSTORE_INT_IP: 172.16.238.12
+      EVENTSTORE_EXT_IP: 172.16.238.12
+      EVENTSTORE_INT_TCP_PORT: 1111
+      EVENTSTORE_EXT_TCP_PORT: 1112
+      EVENTSTORE_INT_HTTP_PORT: 2113
+      EVENTSTORE_EXT_HTTP_PORT: 2114
+      EVENTSTORE_CLUSTER_SIZE: 3
+      EVENTSTORE_CLUSTER_DNS: escluster.net
+      EVENTSTORE_CLUSTER_GOSSIP_PORT: 2113
+
+  es3: 
+    image: es-cluster-node
+    expose:
+      - "1111"
+      - "1112"
+      - "2113"
+      - "2114"
+    networks:
+      escluster:
+        ipv4_address: 172.16.238.13
+    dns: 172.16.238.100
+    environment:
+      EVENTSTORE_INT_IP: 172.16.238.13
+      EVENTSTORE_EXT_IP: 172.16.238.13
+      EVENTSTORE_INT_TCP_PORT: 1111
+      EVENTSTORE_EXT_TCP_PORT: 1112
+      EVENTSTORE_INT_HTTP_PORT: 2113
+      EVENTSTORE_EXT_HTTP_PORT: 2114
+      EVENTSTORE_CLUSTER_SIZE: 3
+      EVENTSTORE_CLUSTER_DNS: escluster.net
+      EVENTSTORE_CLUSTER_GOSSIP_PORT: 2113
+
+  dns-server:
+    image: dns-server
+    expose: 
+      - "53/udp"
+    networks:
+      escluster:
+        ipv4_address: 172.16.238.100
+
+
+networks:
+  escluster:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
