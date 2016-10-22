@@ -11,7 +11,6 @@ RUN apt-get upgrade -y
 RUN apt-get install curl dnsutils -y
 RUN curl -s https://packagecloud.io/install/repositories/EventStore/EventStore-OSS/script.deb.sh | bash
 RUN apt-get install eventstore-oss=3.9.2 -y
-RUN chmod +x start-eventstore.sh
-ENTRYPOINT ./start-eventstore.sh
+CMD exec eventstored
 
 
