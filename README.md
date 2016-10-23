@@ -9,7 +9,7 @@ Requires Docker Engine and Docker Compose. ( https://www.docker.com/technologies
 
 1. ```make deploy```. Or maybe ```sudo make deploy```.
 
-2. Browse to http://172.16.238.11:2114/web/index.html#/clusterstatus. 
+2. Browse to http://172.16.238.11:2114/web/index.html#/clusterstatus. Log in with user "admin", password "changeit". 
 
 ## Warning
 
